@@ -138,26 +138,49 @@ namespace {
   constexpr Score KingProximity = S(1, 3);
 
   // Assorted bonuses and penalties
-  constexpr Score BishopPawns        = S(  3,  7);
-  constexpr Score CorneredBishop     = S( 50, 50);
-  constexpr Score FlankAttacks       = S(  8,  0);
-  constexpr Score Hanging            = S( 69, 36);
-  constexpr Score KingProtector      = S(  7,  8);
-  constexpr Score KnightOnQueen      = S( 16, 12);
-  constexpr Score LongDiagonalBishop = S( 45,  0);
-  constexpr Score MinorBehindPawn    = S( 18,  3);
-  constexpr Score Outpost            = S( 30, 21);
-  constexpr Score PassedFile         = S( 11,  8);
-  constexpr Score PawnlessFlank      = S( 17, 95);
-  constexpr Score RestrictedPiece    = S(  7,  7);
-  constexpr Score ReachableOutpost   = S( 32, 10);
-  constexpr Score RookOnQueenFile    = S(  7,  6);
-  constexpr Score SliderOnQueen      = S( 59, 18);
-  constexpr Score ThreatByKing       = S( 24, 89);
-  constexpr Score ThreatByPawnPush   = S( 48, 39);
-  constexpr Score ThreatBySafePawn   = S(173, 94);
-  constexpr Score TrappedRook        = S( 52, 10);
-  constexpr Score WeakQueen          = S( 49, 15);
+  Score BishopPawns        = S(  3,  7);
+  Score CorneredBishop     = S( 50, 50);
+  Score FlankAttacks       = S(  8,  0);
+  Score Hanging            = S( 69, 36);
+  Score KingProtector      = S(  7,  8);
+  Score KnightOnQueen      = S( 16, 12);
+  Score LongDiagonalBishop = S( 45,  0);
+  Score MinorBehindPawn    = S( 18,  3);
+  Score Outpost            = S( 30, 21);
+  Score PassedFile         = S( 11,  8);
+  Score PawnlessFlank      = S( 17, 95);
+  Score RestrictedPiece    = S(  7,  7);
+  Score ReachableOutpost   = S( 32, 10);
+  Score RookOnQueenFile    = S(  7,  6);
+  Score SliderOnQueen      = S( 59, 18);
+  Score ThreatByKing       = S( 24, 89);
+  Score ThreatByPawnPush   = S( 48, 39);
+  Score ThreatBySafePawn   = S(173, 94);
+  Score TrappedRook        = S( 52, 10);
+  Score WeakQueen          = S( 49, 15);
+
+  auto range = [](int m){return m == 0 ? std::pair<int, int>(0, 0) : std::pair<int, int>(0, 4 * m + 20);};
+  TUNE(SetRange(range),
+        BishopPawns,
+        CorneredBishop,
+        FlankAttacks,
+        Hanging,
+        KingProtector,
+        KnightOnQueen,
+        LongDiagonalBishop,
+        MinorBehindPawn,
+        Outpost,
+        PassedFile,
+        PawnlessFlank,
+        RestrictedPiece,
+        ReachableOutpost,
+        RookOnQueenFile,
+        SliderOnQueen,
+        ThreatByKing,
+        ThreatByPawnPush,
+        ThreatBySafePawn,
+        TrappedRook,
+        WeakQueen);
 
 #undef S
 
