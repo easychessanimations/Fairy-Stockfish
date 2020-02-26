@@ -79,14 +79,17 @@ namespace {
   constexpr Value SpaceThreshold = Value(12222);
 
   // KingAttackWeights[PieceType] contains king attack weights by piece type
-  constexpr int KingAttackWeights[PIECE_TYPE_NB] = { 0, 0, 81, 52, 44, 10, 40 };
+  int KingAttackWeights[PIECE_TYPE_NB] = { 0, 0, 81, 52, 44, 10, 40 };
 
   // Penalties for enemy's safe checks
-  constexpr int QueenSafeCheck  = 780;
-  constexpr int RookSafeCheck   = 1080;
-  constexpr int BishopSafeCheck = 635;
-  constexpr int KnightSafeCheck = 790;
-  constexpr int OtherSafeCheck  = 600;
+  int QueenSafeCheck  = 780;
+  int RookSafeCheck   = 1080;
+  int BishopSafeCheck = 635;
+  int KnightSafeCheck = 790;
+  int OtherSafeCheck  = 600;
+  auto attackrange = [](int m){return m == 0 ? std::pair<int, int>(0, 0) : std::pair<int, int>(0, 200);};
+  TUNE(SetRange(0, 4000), QueenSafeCheck, RookSafeCheck, BishopSafeCheck, KnightSafeCheck, OtherSafeCheck,
+       SetRange(attackrange), KingAttackWeights);
 
 #define S(mg, eg) make_score(mg, eg)
 
