@@ -1,3 +1,6 @@
 stockfish
 *.o
 .depend
+
+# windows
+stockfish.exe
